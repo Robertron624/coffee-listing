@@ -1,9 +1,10 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  import bgCoffeeShop from './assets/bg-cafe.jpg';
   import axios from 'axios';
-
+  
+  import bgCoffeeShop from './assets/bg-cafe.jpg';
   import type { CoffeeItem } from './types';
+  import CoffeeCard from './lib/CoffeeCard.svelte';
 
   const coffeeListUrl = 'https://raw.githubusercontent.com/devchallenges-io/web-project-ideas/main/front-end-projects/data/simple-coffee-listing-data.json'
 
@@ -67,15 +68,11 @@
         <ul class="coffee-cards">
           {#if filter === Filter.All}
             {#each coffeeListData as coffeeItem}
-              <li>
-                <h2>{coffeeItem.name}</h2>
-              </li>
+              <CoffeeCard {coffeeItem} />
             {/each}
           {:else}
             {#each coffeeListData.filter(coffeeItem => coffeeItem.available) as coffeeItem}
-              <li>
-                <h2>{coffeeItem.name}</h2>
-              </li>
+              <CoffeeCard {coffeeItem} />
             {/each}
           {/if}
         </ul>
@@ -93,7 +90,10 @@
 
   main {
     position: relative;
+    background-color: $black;
+    padding-bottom: 10rem;
     .hero {
+      max-height: 30rem;
       img {
         width: 100%;
         height: auto;
@@ -103,14 +103,14 @@
     .our-collection {
       background-color: $charcoal;
       padding: 3rem;
-      position: absolute;
-      top: 100%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+      margin-inline: auto;
+      position: relative;
+      z-index: 1;
+      margin-top: -12rem;
       border-radius: 1rem;
       box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
       width: 90%;
-      max-width: 50rem;
+      max-width: 60rem;
       color: $cream;
 
       background-image: url('./assets/vector.svg');
@@ -161,6 +161,16 @@
             background-color: $gray;
           }
         }
+      }
+
+      .coffee-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+        row-gap: 2.5rem;
+        column-gap: 1rem;
+        margin-top: 2rem;
+        list-style: none;
+        padding: 0;
       }
     }
   }

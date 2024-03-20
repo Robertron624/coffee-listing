@@ -5,3 +5,9 @@ $pale-green: #BEE3CC;
 $cream: #FEF7EE;
 $yellow: #F6C768;
 $red: #ED735D;
+
+@mixin tablet {
+  @media (min-width: 640px) {
+    @content;
+  }
+}
