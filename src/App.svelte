@@ -93,16 +93,15 @@
     background-color: $black;
     padding-bottom: 10rem;
     .hero {
-      max-height: 30rem;
       img {
         width: 100%;
-        height: auto;
+        height: 356px;
+        object-fit: fill;
       }
     }
   
     .our-collection {
       background-color: $charcoal;
-      padding: 3rem;
       margin-inline: auto;
       position: relative;
       z-index: 1;
@@ -112,11 +111,16 @@
       width: 90%;
       max-width: 60rem;
       color: $cream;
-
+      padding-block: 3rem;
       background-image: url('./assets/vector.svg');
         background-repeat: no-repeat;
         background-position: 70% 1rem;
         background-size: 14rem;
+
+      @include tablet {
+        padding: 3rem;
+        width: 80%;
+      }
       
       .intro-text {
         display: flex;
@@ -136,6 +140,7 @@
           align-self: center;
           color: $gray;
           text-wrap: pretty;
+          padding-inline: 1rem;
         }
 
       }
@@ -164,10 +169,16 @@
       }
 
       .coffee-cards {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
-        row-gap: 2.5rem;
-        column-gap: 1rem;
+        @include tablet {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+          row-gap: 2.5rem;
+          column-gap: 1rem;
+        }
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
         margin-top: 2rem;
         list-style: none;
         padding: 0;
