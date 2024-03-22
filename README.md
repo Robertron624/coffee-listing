@@ -28,7 +28,7 @@ This is a simple coffee listing page that displays a list of coffee products. It
 
 ## Live Demo
 
-[Simple Coffee Listing](https://devchallenges-simple-coffee-listing.netlify.app/)
+[Simple Coffee Listing](https://master--robert-coffee-listing.netlify.app/)
 
 ## Screenshot
 
